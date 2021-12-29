@@ -43,6 +43,13 @@ function create($product)
     header("Location: ../product.php?Message=Create successfull !!!");
 }
 
+function deleteProduct($id)
+{
+    $stmt = connectDatabase()->prepare("DELETE FROM PRODUCT WHERE ProductID = '$id'");
+    $stmt->execute();
+    header("Location: ../product.php?Message=Delete successfull !!!");
+}
+
 if (isset($_POST['product'])) {
     switch ($_POST['product']) {
         case $_POST['product'] == 'create':
@@ -65,6 +72,13 @@ if (isset($_POST['product'])) {
                 header("Location: ../product.php?Message=Trùng tên !!!");
             else
                 create($product);
+
+            break;
+        case $_POST['product'] == 'delete':
+
+            $id = $_GET['id'];
+
+            deleteProduct($id);
 
             break;
     }
