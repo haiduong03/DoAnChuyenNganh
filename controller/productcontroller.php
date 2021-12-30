@@ -2,8 +2,7 @@
 function connectDatabase()
 {
     $servername = "localhost";
-    // $database = "web";
-    $database = "product";
+    $database = "web";
     $username = "root";
     $password = "";
     try {
